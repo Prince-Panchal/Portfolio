@@ -11,38 +11,43 @@
     };
     loader();
     
-    // Fast WOW.js Initiation
+    // Fast WOW.js Initiation (Disabled on mobile to prevent scroll lag)
     if (typeof WOW !== 'undefined') {
         new WOW({
             boxClass: 'wow',
             animateClass: 'animated',
             offset: 50,
-            mobile: true,
-            live: true
+            mobile: false,
+            live: false
         }).init();
     }
     
-    // Back to top button
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 200) {
-            $('.back-to-top').fadeIn(150);
-        } else {
-            $('.back-to-top').fadeOut(150);
+    // Throttled 60FPS Passive Scroll Listener
+    var isTicking = false;
+    window.addEventListener('scroll', function () {
+        if (!isTicking) {
+            window.requestAnimationFrame(function () {
+                var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                if (scrollTop > 200) {
+                    $('.back-to-top').stop(true, true).fadeIn(150);
+                } else {
+                    $('.back-to-top').stop(true, true).fadeOut(150);
+                }
+                
+                if (scrollTop > 20) {
+                    $('.navbar').addClass('nav-sticky');
+                } else {
+                    $('.navbar').removeClass('nav-sticky');
+                }
+                isTicking = false;
+            });
+            isTicking = true;
         }
-    });
+    }, { passive: true });
     
     $('.back-to-top').click(function () {
         $('html, body').animate({scrollTop: 0}, 350);
         return false;
-    });
-    
-    // Sticky Navbar
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 20) {
-            $('.navbar').addClass('nav-sticky');
-        } else {
-            $('.navbar').removeClass('nav-sticky');
-        }
     });
     
     // Snappy Smooth Scrolling
