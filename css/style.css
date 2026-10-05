@@ -328,15 +328,15 @@ a:hover {
 .img-wrapper {
     position: relative;
     display: inline-block;
-    padding: 20px 30px 0 30px;
-    background: radial-gradient(circle at 50% 35%, rgba(99, 102, 241, 0.18) 0%, rgba(30, 41, 59, 0.45) 75%);
+    padding: 35px 35px 0 35px;
+    background: radial-gradient(circle at 50% 30%, rgba(99, 102, 241, 0.22) 0%, rgba(30, 41, 59, 0.55) 75%);
     border: 1px solid var(--border-highlight);
-    border-radius: 36px;
+    border-radius: 40px;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
 .img-wrapper img {
-    max-height: 520px;
+    max-height: 480px;
     width: auto;
     max-width: 100%;
     object-fit: contain;
@@ -369,13 +369,13 @@ a:hover {
 }
 
 .floating-card.card-1 {
-    top: 35px;
-    left: -40px;
+    top: 140px;
+    left: -70px;
 }
 
 .floating-card.card-2 {
-    bottom: 35px;
-    right: -30px;
+    bottom: 50px;
+    right: -60px;
     animation-delay: 1.5s;
 }
 
@@ -449,17 +449,17 @@ a:hover {
 .about-img-container {
     position: relative;
     text-align: center;
-    padding: 20px 25px 0 25px;
-    background: radial-gradient(circle at 50% 35%, rgba(139, 92, 246, 0.15) 0%, rgba(15, 23, 42, 0.5) 75%);
+    padding: 30px 30px 0 30px;
+    background: radial-gradient(circle at 50% 30%, rgba(139, 92, 246, 0.18) 0%, rgba(15, 23, 42, 0.55) 75%);
     border: 1px solid var(--border-color);
-    border-radius: 32px;
+    border-radius: 36px;
     box-shadow: 0 15px 45px rgba(0, 0, 0, 0.45);
     max-width: 400px;
     margin: 0 auto;
 }
 
 .rounded-custom {
-    max-height: 480px;
+    max-height: 450px;
     width: auto;
     max-width: 100%;
     object-fit: contain;
