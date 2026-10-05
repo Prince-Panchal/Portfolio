@@ -1219,12 +1219,62 @@ select.custom-input option {
     z-index: 99;
 }
 
-/* Responsive Styles */
-@media (max-width: 991px) {
+/* Responsive & Mobile Optimization (Android & iOS Safari) */
+html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0;
+    padding: 0;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+@supports (padding: max(0px)) {
+    body {
+        padding-left: min(0px, env(safe-area-inset-left));
+        padding-right: min(0px, env(safe-area-inset-right));
+    }
+}
+
+/* Prevent auto-zoom on iOS Safari input focus */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    select, textarea, input {
+        font-size: 16px !important;
+    }
+}
+
+@media (max-width: 991.98px) {
     .navbar {
         padding: 12px 20px;
     }
     
+    .navbar-collapse {
+        background: rgba(15, 23, 42, 0.96);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid var(--border-color);
+        border-radius: 20px;
+        padding: 20px;
+        margin-top: 15px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+    }
+
+    .navbar-nav .nav-link {
+        padding: 12px 18px !important;
+        font-size: 16px;
+        border-radius: 12px;
+        margin-bottom: 4px;
+        color: var(--text-light) !important;
+    }
+
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+        background: rgba(99, 102, 241, 0.15);
+        color: var(--accent-purple) !important;
+    }
+
     .hero {
         padding: 110px 0 50px 0;
         text-align: center;
@@ -1245,6 +1295,8 @@ select.custom-input option {
     
     .hero-btn {
         justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
     }
     
     .hero-social {
@@ -1273,6 +1325,10 @@ select.custom-input option {
 
     .modal-content-card {
         padding: 25px 20px;
+        width: 92%;
+        max-height: 85vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
     .modal-header-section {
@@ -1281,26 +1337,109 @@ select.custom-input option {
     }
 }
 
-@media (max-width: 575px) {
+@media (max-width: 767.98px) {
+    section, .about, .experience, .portfolio, .contact {
+        padding: 60px 0 !important;
+    }
+
     .hero-title {
-        font-size: 30px;
+        font-size: 32px;
+    }
+
+    .img-wrapper {
+        padding: 25px 20px 0 20px;
+    }
+
+    .img-wrapper img {
+        max-height: 420px;
+    }
+
+    .floating-card.card-1 {
+        left: -20px;
+        top: 100px;
+    }
+
+    .floating-card.card-2 {
+        right: -20px;
+        bottom: 30px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .hero-title {
+        font-size: 28px;
+        line-height: 1.25;
     }
     
+    .typed-wrapper {
+        font-size: 17px;
+    }
+
     .highlights-grid {
         grid-template-columns: 1fr;
     }
 
+    .img-wrapper {
+        padding: 20px 15px 0 15px;
+        border-radius: 28px;
+        max-width: 320px;
+        margin: 0 auto;
+    }
+
     .img-wrapper img {
-        max-height: 380px;
+        max-height: 360px;
     }
 
-    .floating-card.card-1 {
-        left: 5px;
-        top: 15px;
+    .floating-card {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        margin: 12px auto 0 auto;
+        display: inline-flex;
+        width: 100%;
+        justify-content: center;
+        animation: none;
     }
 
-    .floating-card.card-2 {
-        right: 5px;
-        bottom: 15px;
+    .about-img-container {
+        max-width: 320px;
+        padding: 20px 15px 0 15px;
+        border-radius: 28px;
+    }
+
+    .about-img-container img.rounded-custom {
+        max-height: 360px;
+    }
+
+    .hero-btn .btn {
+        width: 100%;
+        margin-bottom: 8px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .contact-form-card {
+        padding: 24px 18px;
+    }
+
+    .official-app-icon {
+        width: 90px !important;
+        height: 90px !important;
+    }
+}
+
+@media (max-width: 360px) {
+    .hero-title {
+        font-size: 24px;
+    }
+
+    .typed-wrapper {
+        font-size: 15px;
+    }
+
+    .section-header h2 {
+        font-size: 24px;
     }
 }
